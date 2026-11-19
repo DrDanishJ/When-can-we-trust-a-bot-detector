@@ -1,0 +1,2 @@
+AUROC_confidence,AUROC_minus_DAUC,AUROC_DAUC,AUROC_confidence_plus_DAUC,coef_DAUC_sign
+0.830 ± 0.007,0.431 ± 0.023,0.569 ± 0.023,0.826 ± 0.007,0.600 ± 0.894

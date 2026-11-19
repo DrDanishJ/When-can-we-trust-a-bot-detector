@@ -1,0 +1,4 @@
+dataset,artifact_features_present,SDR,F1_with_A,F1_without_A,delta_F1,A_present
+cresci15,15,0.223 ± 0.070,0.995 ± 0.002,0.995 ± 0.002,-0.000 ± 0.001,"followers_growth, friends_growth, status_growth, favorites_growth, listed_growth, ffru, n_tweets_collected, temporal_overlap, temporal_overlap_age, account_age_days, profile_update_days, followers_over_time, friends_over_time, status_over_time, favorites_over_time"
+cresci17,16,0.530 ± 0.076,0.996 ± 0.001,0.995 ± 0.001,-0.001 ± 0.001,"verified, followers_growth, friends_growth, status_growth, favorites_growth, listed_growth, ffru, n_tweets_collected, temporal_overlap, temporal_overlap_age, account_age_days, profile_update_days, followers_over_time, friends_over_time, status_over_time, favorites_over_time"
+twibot20,7,0.503 ± 0.003,0.880 ± 0.002,0.828 ± 0.003,-0.052 ± 0.004,"verified, n_tweets_collected, account_age_days, followers_over_time, friends_over_time, status_over_time, favorites_over_time"

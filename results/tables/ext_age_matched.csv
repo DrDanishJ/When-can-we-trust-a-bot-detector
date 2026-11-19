@@ -1,0 +1,2 @@
+n_matched,n_bot,AUC_age_at_crawl,F1_all,AUC_all,F1_without_A,AUC_without_A,F1_without_A+counts,AUC_without_A+counts,F1_without_A+counts+period,AUC_without_A+counts+period
+4284.000 ± 0.000,2142.000 ± 0.000,0.494 ± 0.000,0.991 ± 0.003,0.999 ± 0.001,0.986 ± 0.001,0.999 ± 0.000,0.982 ± 0.003,0.999 ± 0.000,0.982 ± 0.001,0.999 ± 0.000

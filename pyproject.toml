@@ -1,0 +1,15 @@
+[project]
+name = "ibd-trust"
+version = "1.1.0"
+description = "iBotDetection: shortcut-aware, uncertainty-calibrated and faithfulness-verified explanations for social bot detection"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120

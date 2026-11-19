@@ -1,0 +1,10 @@
+\begin{tabular}{llllllll}
+\toprule
+policy & AUC & AUC_normalised & coverage_min & coverage_max & AUC_common & common_lo & common_hi \\
+\midrule
+confidence only & 0.880 ± 0.003 & 0.923 ± 0.001 & 0.046 ± 0.003 & 0.999 ± 0.001 & 0.922 ± 0.002 & 0.069 ± 0.010 & 0.995 ± 0.001 \\
+singleton only & 0.858 ± 0.015 & 0.919 ± 0.002 & 0.065 ± 0.015 & 0.998 ± 0.001 & 0.919 ± 0.002 & 0.069 ± 0.010 & 0.995 ± 0.001 \\
+singleton + DAUC <= tau & 0.816 ± 0.009 & 0.871 ± 0.003 & 0.058 ± 0.007 & 0.995 ± 0.001 & 0.870 ± 0.002 & 0.069 ± 0.010 & 0.995 ± 0.001 \\
+confidence + DAUC <= tau & 0.826 ± 0.008 & 0.877 ± 0.002 & 0.055 ± 0.006 & 0.996 ± 0.002 & 0.875 ± 0.002 & 0.069 ± 0.010 & 0.995 ± 0.001 \\
+\bottomrule
+\end{tabular}

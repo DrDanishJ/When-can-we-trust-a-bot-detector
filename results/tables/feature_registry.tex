@@ -1,0 +1,84 @@
+\begin{tabular}{lllrlllr}
+\toprule
+name & category & equation & artifact_prone & evasion_cost & description & source & new_in_ibd \\
+\midrule
+verified & user &  & True & high & Verified badge (platform policy; may reflect how the dataset was sampled) & Varol et al. 2017 & False \\
+followers_count & user &  & False & high & Number of followers & Yang et al. 2020 & False \\
+friends_count & user &  & False & low & Number of accounts followed & Yang et al. 2020 & False \\
+statuses_count & user &  & False & low & Total tweets posted (profile counter) & Yang et al. 2020 & False \\
+favourites_count & user &  & False & low & Total likes given & Yang et al. 2020 & False \\
+listed_count & user &  & False & high & Number of public lists containing the account & Yang et al. 2020 & False \\
+name_length & user &  & False & low & Characters in display name & Yang et al. 2020 & False \\
+screen_name_length & user &  & False & low & Characters in screen name & Yang et al. 2020 & False \\
+name_similarity & user & 1 & False & low & Character-set overlap of name and screen name & Hayawi et al. 2022 & False \\
+screen_name_digits & user &  & False & low & Share of digits in screen name & Yang et al. 2020 & False \\
+has_description & profile &  & False & low & Profile has a description & Varol et al. 2017 & False \\
+description_length & profile &  & False & low & Characters in description & Yang et al. 2020 & False \\
+has_url & profile &  & False & low & Profile has a URL & Varol et al. 2017 & False \\
+has_location & profile &  & False & low & Profile has a location & Varol et al. 2017 & False \\
+profile_completeness & profile &  & False & low & Mean of description, URL, location, custom image & Varol et al. 2017 & False \\
+default_profile & profile &  & False & low & Default theme & Yang et al. 2020 & False \\
+default_profile_image & profile &  & False & low & Default avatar & Yang et al. 2020 & False \\
+geo_enabled & profile &  & False & low & Geotagging enabled & Varol et al. 2017 & False \\
+profile_background_tile & profile &  & False & low & Background image tiled & Varol et al. 2017 & False \\
+profile_use_background_image & profile &  & False & low & Uses a background image & Varol et al. 2017 & False \\
+ff_ratio & engagement &  & False & low & friends / max(followers, 1) & Yang et al. 2020 & False \\
+user_reputation & engagement &  & False & high & followers / (followers + friends + 1) & Chu et al. 2012 & False \\
+followers_growth & engagement & 10 & True & high & followers / days between creation and P_updated & IBD variant of Yang et al. 2020 & True \\
+friends_growth & engagement & 11 & True & low & friends / days between creation and P_updated & IBD variant of Yang et al. 2020 & True \\
+status_growth & engagement & 12 & True & low & statuses / days between creation and P_updated & IBD variant of Yang et al. 2020 & True \\
+favorites_growth & engagement & 13 & True & low & likes / days between creation and P_updated & IBD variant of Yang et al. 2020 & True \\
+listed_growth & engagement &  & True & high & listed / days between creation and P_updated & IBD variant of Yang et al. 2020 & True \\
+ffru & engagement & 14 & True & low & ff_ratio / days between creation and P_updated & IBD & True \\
+reply_diversity & engagement & 15 & False & high & Unique users replied to / replies & IBD & True \\
+avg_engagement_received & engagement & 16 & False & high & Mean retweets + replies + likes received per tweet & Lopez-Joya et al. 2024 & False \\
+retweet_ratio & engagement &  & False & low & Share of collected tweets that are retweets & Chu et al. 2012 & False \\
+reply_ratio & engagement &  & False & low & Share of collected tweets that are replies & Chu et al. 2012 & False \\
+avg_hashtags & engagement &  & False & low & Hashtags per tweet & Chu et al. 2012 & False \\
+avg_mentions & engagement &  & False & low & Mentions per tweet & Chu et al. 2012 & False \\
+avg_urls & engagement &  & False & low & URLs per tweet & Chu et al. 2012 & False \\
+hashtag_diversity & engagement &  & False & low & Unique hashtags / tweets & Kosmajac & Keselj 2019 & False \\
+n_tweets_collected & content &  & True & low & Tweets available in the dataset (collection depth, capped) & Varol et al. 2017 & False \\
+avg_tweet_length & content &  & False & low & Mean characters per tweet (URLs removed) & Cardaioli et al. 2021 & False \\
+min_tweet_length & content & 7 & False & low & Shortest tweet & Cardaioli et al. 2021 & False \\
+max_tweet_length & content & 8 & False & low & Longest tweet & Cardaioli et al. 2021 & False \\
+tweet_length_irregularity & content & 9 & False & low & Std of tweet length (TLI) & Cardaioli et al. 2021 & False \\
+duplicate_tweet_ratio & content &  & False & low & Share of tweets that repeat an earlier tweet & Chu et al. 2012 & False \\
+unique_word_count & linguistic & 2 & False & low & Distinct words over all tweets (UWC) & Cardaioli et al. 2021 & False \\
+unique_word_use & linguistic & 3 & False & low & Distinct words per tweet (UWU) & Cardaioli et al. 2021 & False \\
+punctuation_density & linguistic & 4 & False & low & Punctuation marks per word (PD) & Cardaioli et al. 2021 & False \\
+avg_elongated_words & linguistic & 5 & False & low & Elongated words (e.g. 'sooo') per tweet (AEW) & Ilias & Roussaki 2021 & False \\
+spam_ad & linguistic & 6 & False & low & Spam/advertising keyword occurrences (SpamAd) & Chu et al. 2012 & False \\
+spam_density & linguistic &  & False & low & SpamAd / total words & Chu et al. 2012 & False \\
+avg_sentence_length & linguistic &  & False & low & Words per sentence & Cardaioli et al. 2021 & False \\
+capitalization_rate & linguistic &  & False & low & Upper-case share of letters & Lopez-Joya et al. 2024 & False \\
+special_char_rate & linguistic &  & False & low & Non-alphanumeric, non-space characters per character & Cardaioli et al. 2021 & False \\
+emoji_rate & linguistic &  & False & low & Emoji per tweet & Varol et al. 2017 & False \\
+inter_tweet_time & temporal & 17 & False & high & Mean hours between consecutive tweets (ITT) & Varol et al. 2017 & False \\
+tweet_burstiness & temporal & 18 & False & high & Std of hours between tweets (TB) & Varol et al. 2017 & False \\
+tweet_density_over_time & temporal & 19 & False & high & Tweets per day over the active span (TDOT) & Yang et al. 2020 & False \\
+tweet_time_irregularity & temporal & 20 & False & high & Coefficient of variation of inter-tweet time (TTI) & IBD variant of Varol et al. 2017 & True \\
+temporal_overlap & temporal & 21 & True & high & Mean |tweet time - (P_updated - P_created)| in days (TO) & IBD & True \\
+temporal_overlap_age & temporal & 22 & True & high & Mean |tweet time - account age at Time_now| in days (TOA) & IBD & True \\
+account_age_days & temporal &  & True & high & Days from creation to Time_now & Yang et al. 2020 & False \\
+profile_update_days & temporal &  & True & high & Days from creation to P_updated ('profile_update') & IBD variant of Yang et al. 2020 & True \\
+followers_over_time & temporal & 23 & True & high & followers / account age & Yang et al. 2020 & False \\
+friends_over_time & temporal & 24 & True & low & friends / account age & Yang et al. 2020 & False \\
+status_over_time & temporal & 25 & True & low & statuses / account age & Yang et al. 2020 & False \\
+favorites_over_time & temporal & 26 & True & low & likes / account age & Yang et al. 2020 & False \\
+mean_readability & readability & 27 & False & low & Mean of Dale-Chall, Flesch and ARI scores (MR) & IBD variant of Cardaioli et al. 2021 & True \\
+fog_smog_index & readability & 28 & False & low & Gunning Fog + SMOG (FSI) & IBD variant of Cardaioli et al. 2021 & True \\
+fog_smog_to_tweet & readability & 29 & False & low & FSI / tweets (FST) & IBD variant of Cardaioli et al. 2021 & True \\
+content_entropy & readability & 30 & False & low & Shannon entropy of word distribution (CE, bits) & Varol et al. 2017 & False \\
+avg_polarity & sentiment & 31 & False & low & Mean TextBlob polarity & Varol et al. 2017 & False \\
+avg_subjectivity & sentiment & 32 & False & low & Mean TextBlob subjectivity & Varol et al. 2017 & False \\
+min_polarity & sentiment &  & False & low & Minimum polarity & Varol et al. 2017 & False \\
+max_polarity & sentiment &  & False & low & Maximum polarity & Varol et al. 2017 & False \\
+min_subjectivity & sentiment &  & False & low & Minimum subjectivity & Varol et al. 2017 & False \\
+max_subjectivity & sentiment &  & False & low & Maximum subjectivity & Varol et al. 2017 & False \\
+polarity_drift & sentiment &  & False & low & Std of polarity & Dickerson et al. 2014 & False \\
+extreme_polarity & sentiment & 33 & False & low & Share of tweets with |polarity| > 0.75 & IBD & True \\
+subjectivity_drift & sentiment & 34 & False & low & Std of subjectivity (SD) & Dickerson et al. 2014 & False \\
+consistent_subjectivity & sentiment & 35 & False & low & 1 if SD < 0.1 (CS) & IBD & True \\
+\bottomrule
+\end{tabular}

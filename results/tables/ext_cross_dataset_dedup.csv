@@ -1,0 +1,7 @@
+train,test,note,F1_with_A,n_with_A,F1_without_A,n_without_A,F1_without_A+counts,n_without_A+counts,F1_without_A+counts+period,n_without_A+counts+period,F1_without_new,n_without_new
+cresci15,cresci17,Cresci-17 test without fake_followers,0.655 ± 0.062,77,0.674 ± 0.062,62,0.796 ± 0.025,57,0.800 ± 0.025,54,0.511 ± 0.197,61
+cresci15,twibot20,,0.326 ± 0.016,61,0.313 ± 0.012,55,0.313 ± 0.012,50,0.306 ± 0.010,47,0.304 ± 0.019,56
+cresci17,cresci15,Cresci-17 trained without fake_followers,0.865 ± 0.021,77,0.891 ± 0.019,62,0.870 ± 0.040,57,0.837 ± 0.064,54,0.879 ± 0.021,61
+cresci17,twibot20,,0.308 ± 0.012,62,0.345 ± 0.003,55,0.416 ± 0.007,50,0.436 ± 0.015,47,0.309 ± 0.026,57
+twibot20,cresci15,,0.771 ± 0.034,61,0.703 ± 0.020,55,0.690 ± 0.029,50,0.772 ± 0.025,47,0.772 ± 0.023,56
+twibot20,cresci17,,0.589 ± 0.017,62,0.570 ± 0.024,55,0.527 ± 0.028,50,0.630 ± 0.019,47,0.578 ± 0.020,57

@@ -1,0 +1,15 @@
+# Overrides for the local machine: Ryzen 5 3600 (6 cores / 12 threads), 16 GB RAM, GTX 1660 Ti 6 GB.
+# Merged on top of default.yaml. Usage: python scripts/run_all.py --config configs/my_pc.yaml
+paths:                  # local folder names under data/raw differ from the defaults
+  cresci15: data/raw/Cresci 2015
+  cresci17: data/raw/Cresci 2017
+  twibot20: data/raw/TwiBot-20
+  fox8: data/raw/fox8_23/fox8_23_dataset.ndjson
+features:
+  n_jobs: 10           # leave 2 threads free for the system
+data:
+  chunksize: 100000     # smaller chunks keep Cresci-17 within 16 GB
+models:
+  svm_max_train: 8000   # SVM is the slowest model; subsample its training set
+  params:
+    ebm: {interactions: 10, outer_bags: 8, n_jobs: 10}

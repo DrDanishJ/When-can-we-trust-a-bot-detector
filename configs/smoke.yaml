@@ -1,0 +1,35 @@
+# Quick end-to-end run on the small samples (minutes, not hours). Results are NOT meaningful;
+# this only checks that every script runs. Usage: python scripts/run_all.py --config configs/smoke.yaml
+paths:
+  cresci15: data/sample/cresci-15
+  cresci17: data/sample/cresci-17
+  twibot20: data/sample/twibot-20
+  fox8: data/sample/fox8-23/fox8_23_sample.ndjson
+  lsabre: data/sample/lsabre
+  cache: data/cache_smoke
+  results: results_smoke
+models:
+  seeds: [0, 1]
+  tabnet_max_epochs: 5
+  params:
+    ebm: {interactions: 0, outer_bags: 2, max_rounds: 300}
+    catboost: {iterations: 100}
+explain:
+  shap_max_samples: 200
+  kernel_shap_background: 10
+  kernel_shap_samples: 10
+  lime_samples: 15
+  lime_num_samples: 500
+conformal:
+  alphas: [0.2, 0.3]        # tiny calibration sets need a large alpha to produce singleton sets
+  pvalue_shap_accounts: 10
+reliability:
+  dauc_accounts: 40
+  roar_k: [0, 2, 5]
+  roar_random_repeats: 1
+  esi_bootstrap: 3
+  esi_accounts: 20
+shift:
+  lsabre_variants: [zero_shot_rewrite_llama, feature_guidance_rewrite_llama]
+trust_gate:
+  alpha: 0.3

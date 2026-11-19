@@ -1,0 +1,111 @@
+# iBotDetection (IBD) - trust-oriented bot detection
+# Every script reads this file. Override any value on the command line with
+#   python scripts/02_train_eval.py --config configs/default.yaml --set seeds=[0,1]
+# or copy this file (e.g. configs/smoke.yaml) and pass it with --config.
+
+paths:
+  # Point these at your local copies. Folder layouts are described in data/README.md.
+  cresci15: data/raw/cresci-15            # contains E13.Real/, TFP.Real/, FSF.Fake/, INT.Fake/, TWT.Fake/
+  cresci17: data/raw/cresci-17            # contains genuine_accounts.csv/, social_spambots_1.csv/, ...
+  twibot20: data/raw/twibot-20            # contains train.json, dev.json, test.json
+  fox8: data/raw/fox8-23/fox8_23_dataset.ndjson
+  lsabre: data/raw/lsabre/dataset         # df_rewrites_1000_users_part_*.csv from github.com/runi-cyber-ai/LSABRE
+  cache: data/cache                       # parquet files written by 01_build_features.py
+  results: results                        # tables (CSV + LaTeX) and figures (PNG + PDF)
+
+datasets:
+  train_test: [cresci15, cresci17, twibot20]   # trained and evaluated in-dataset
+  test_only: [fox8, lsabre]                    # used only as external test sets
+
+data:
+  max_tweets_per_account: 200     # most recent N tweets per account (fox8-23 also has <=200)
+  english_only: false             # drop non-English tweets (needs `pip install langdetect`); see data/README.md
+  chunksize: 200000               # rows per chunk when streaming the large Cresci tweet CSVs
+  # Cresci-17 groups. traditional_spambots_2/3/4 have no tweets in the original release; including them
+  # makes "has no tweets" a perfect bot signal. Kept out by default; set true to reproduce the old setup.
+  cresci17_include_tweetless_groups: false
+  cresci17_include_fake_followers: true
+  # Reference date used for account age (Time_now in eqs. 22-26). Options:
+  #   dataset_end  - fixed date per dataset (below), as described in the paper
+  #   crawled_at   - each account's own crawl time when available (falls back to dataset_end)
+  age_reference: dataset_end
+  dataset_end:
+    cresci15: "2015-02-14"
+    cresci17: "2016-03-15"
+    twibot20: "2020-09-30"
+    fox8: "2023-06-01"
+    lsabre: "2020-09-30"
+
+features:
+  n_jobs: -1                      # processes for text features (-1 = all cores)
+  spam_keywords: [free, offer, win, click, money, promo, subscribe, visit, guarantee, cash, urgent, limited,
+                  exclusive, prize, giveaway, contest, reward, bonus, credit, cheap, deal, discount, order,
+                  instant, download, buy, help, donate, investment, bitcoin, crypto, forex, sponsor]
+  extreme_polarity_threshold: 0.75
+  consistent_subjectivity_threshold: 0.1
+
+split:
+  # Cresci datasets have no official split: stratified train / model-selection / calibration / test.
+  test_size: 0.20
+  select_size: 0.10
+  calib_size: 0.10
+  # TwiBot-20 uses its official train/dev/test; dev is halved into model-selection and calibration.
+
+models:
+  seeds: [0, 1, 2, 3, 4]
+  smote: true                     # oversample the minority class in the training split only
+  classifiers: [rf, et, dt, svm, xgboost, lightgbm, catboost, mlp, ebm, tabnet]
+  explain_model: lightgbm         # model used for SHAP, audit, conformal and reliability experiments
+  svm_max_train: 20000            # SVM is subsampled above this many training rows
+  tabnet_max_epochs: 200
+  # Per-classifier hyper-parameter overrides (scikit-learn style set_params), e.g.
+  #   params: {lightgbm: {n_estimators: 500}, ebm: {interactions: 0}}
+  params: {}
+
+explain:
+  shap_max_samples: 2000          # test accounts explained per dataset (TreeSHAP is exact and fast)
+  kernel_shap_background: 50      # k-means background for KernelSHAP (SVM, MLP, TabNet, conformal p-values)
+  kernel_shap_samples: 200        # accounts explained with KernelSHAP
+  lime_samples: 300               # accounts explained with LIME (for SLA)
+  lime_num_samples: 5000          # perturbations per LIME explanation
+  top_features_plot: 20
+
+audit:
+  # Feature tags come from src/ibd/features/registry.py (artifact_prone=True). Add names here to extend A.
+  extra_artifact_features: []
+  age_bins: 20                    # quantile bins of account age at crawl for the Cresci-17 matching (step 10)
+
+conformal:
+  alphas: [0.05, 0.10]
+  pvalue_shap_accounts: 100       # ambiguous accounts explained with SHAP on conformal p-values
+  calibration_bins: 10
+
+reliability:
+  datasets: [twibot20]            # expensive tests (ROAR, ESI) run only here by default
+  dauc_steps: 10                  # K in eq. 42
+  # How eq. 42 "deletes" a feature: background = replace it with the values of M random training accounts and
+  # average over the M draws (default); median = replace it with the training median (the first-run definition,
+  # uninformative for binary flags such as `verified` whose median equals most accounts' own value).
+  deletion_baseline: background
+  deletion_background: 50         # M (raised from 20 on 2026-10-18 to reduce Monte-Carlo variance; same definition)
+  dauc_accounts: 500
+  roar_k: [0, 2, 4, 6, 8, 10, 15, 20]
+  roar_random_repeats: 3
+  esi_bootstrap: 10               # B in eq. 44
+  esi_accounts: 300
+  sla_k: 5
+
+trust_gate:
+  alpha: 0.05
+  dataset: twibot20
+
+shift:
+  # (train_dataset, test_dataset) pairs for Table 15; features are restricted to those available in both.
+  pairs:
+    - [twibot20, twibot20]
+    - [cresci17, twibot20]
+    - [twibot20, cresci17]
+    - [cresci17, fox8]
+    - [twibot20, fox8]
+    - [twibot20, lsabre]
+  lsabre_variants: all            # or a list such as [zero_shot_rewrite_llama, feature_guidance_rewrite_llama]

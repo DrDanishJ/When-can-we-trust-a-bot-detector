@@ -1,0 +1,79 @@
+name,category,source,new_in_ibd,artifact_prone,description,cresci15,cresci17,twibot20,fox8,lsabre
+verified,user,Varol et al. 2017,False,True,Verified badge (platform policy; may reflect how the dataset was sampled),0,1,1,1,1
+followers_count,user,Yang et al. 2020,False,False,Number of followers,1,1,1,1,1
+friends_count,user,Yang et al. 2020,False,False,Number of accounts followed,1,1,1,1,1
+statuses_count,user,Yang et al. 2020,False,False,Total tweets posted (profile counter),1,1,1,1,1
+favourites_count,user,Yang et al. 2020,False,False,Total likes given,1,1,1,1,1
+listed_count,user,Yang et al. 2020,False,False,Number of public lists containing the account,1,1,1,1,1
+name_length,user,Yang et al. 2020,False,False,Characters in display name,1,1,1,1,1
+screen_name_length,user,Yang et al. 2020,False,False,Characters in screen name,1,1,1,1,1
+name_similarity,user,Hayawi et al. 2022,False,False,Character-set overlap of name and screen name,1,1,1,1,1
+screen_name_digits,user,Yang et al. 2020,False,False,Share of digits in screen name,1,1,1,1,1
+has_description,profile,Varol et al. 2017,False,False,Profile has a description,1,1,1,1,1
+description_length,profile,Yang et al. 2020,False,False,Characters in description,1,1,1,1,1
+has_url,profile,Varol et al. 2017,False,False,Profile has a URL,1,1,1,1,1
+has_location,profile,Varol et al. 2017,False,False,Profile has a location,1,1,1,1,1
+profile_completeness,profile,Varol et al. 2017,False,False,"Mean of description, URL, location, custom image",1,1,1,1,1
+default_profile,profile,Yang et al. 2020,False,False,Default theme,1,1,1,1,1
+default_profile_image,profile,Yang et al. 2020,False,False,Default avatar,1,1,1,1,1
+geo_enabled,profile,Varol et al. 2017,False,False,Geotagging enabled,1,1,1,1,1
+profile_background_tile,profile,Varol et al. 2017,False,False,Background image tiled,1,1,1,1,1
+profile_use_background_image,profile,Varol et al. 2017,False,False,Uses a background image,1,1,1,1,1
+ff_ratio,engagement,Yang et al. 2020,False,False,"friends / max(followers, 1)",1,1,1,1,1
+user_reputation,engagement,Chu et al. 2012,False,False,followers / (followers + friends + 1),1,1,1,1,1
+followers_growth,engagement,IBD variant of Yang et al. 2020,True,True,followers / days between creation and P_updated,1,1,0,0,0
+friends_growth,engagement,IBD variant of Yang et al. 2020,True,True,friends / days between creation and P_updated,1,1,0,0,0
+status_growth,engagement,IBD variant of Yang et al. 2020,True,True,statuses / days between creation and P_updated,1,1,0,0,0
+favorites_growth,engagement,IBD variant of Yang et al. 2020,True,True,likes / days between creation and P_updated,1,1,0,0,0
+listed_growth,engagement,IBD variant of Yang et al. 2020,True,True,listed / days between creation and P_updated,1,1,0,0,0
+ffru,engagement,IBD,True,True,ff_ratio / days between creation and P_updated,1,1,0,0,0
+reply_diversity,engagement,IBD,True,False,Unique users replied to / replies,1,1,0,1,0
+avg_engagement_received,engagement,Lopez-Joya et al. 2024,False,False,Mean retweets + replies + likes received per tweet,1,1,0,1,0
+retweet_ratio,engagement,Chu et al. 2012,False,False,Share of collected tweets that are retweets,1,1,1,1,1
+reply_ratio,engagement,Chu et al. 2012,False,False,Share of collected tweets that are replies,1,1,0,1,0
+avg_hashtags,engagement,Chu et al. 2012,False,False,Hashtags per tweet,1,1,1,1,1
+avg_mentions,engagement,Chu et al. 2012,False,False,Mentions per tweet,1,1,1,1,1
+avg_urls,engagement,Chu et al. 2012,False,False,URLs per tweet,1,1,1,1,1
+hashtag_diversity,engagement,Kosmajac & Keselj 2019,False,False,Unique hashtags / tweets,1,1,1,1,1
+n_tweets_collected,content,Varol et al. 2017,False,True,"Tweets available in the dataset (collection depth, capped)",1,1,1,1,1
+avg_tweet_length,content,Cardaioli et al. 2021,False,False,Mean characters per tweet (URLs removed),1,1,1,1,1
+min_tweet_length,content,Cardaioli et al. 2021,False,False,Shortest tweet,1,1,1,1,1
+max_tweet_length,content,Cardaioli et al. 2021,False,False,Longest tweet,1,1,1,1,1
+tweet_length_irregularity,content,Cardaioli et al. 2021,False,False,Std of tweet length (TLI),1,1,1,1,1
+duplicate_tweet_ratio,content,Chu et al. 2012,False,False,Share of tweets that repeat an earlier tweet,1,1,1,1,1
+unique_word_count,linguistic,Cardaioli et al. 2021,False,False,Distinct words over all tweets (UWC),1,1,1,1,1
+unique_word_use,linguistic,Cardaioli et al. 2021,False,False,Distinct words per tweet (UWU),1,1,1,1,1
+punctuation_density,linguistic,Cardaioli et al. 2021,False,False,Punctuation marks per word (PD),1,1,1,1,1
+avg_elongated_words,linguistic,Ilias & Roussaki 2021,False,False,Elongated words (e.g. 'sooo') per tweet (AEW),1,1,1,1,1
+spam_ad,linguistic,Chu et al. 2012,False,False,Spam/advertising keyword occurrences (SpamAd),1,1,1,1,1
+spam_density,linguistic,Chu et al. 2012,False,False,SpamAd / total words,1,1,1,1,1
+avg_sentence_length,linguistic,Cardaioli et al. 2021,False,False,Words per sentence,1,1,1,1,1
+capitalization_rate,linguistic,Lopez-Joya et al. 2024,False,False,Upper-case share of letters,1,1,1,1,1
+special_char_rate,linguistic,Cardaioli et al. 2021,False,False,"Non-alphanumeric, non-space characters per character",1,1,1,1,1
+emoji_rate,linguistic,Varol et al. 2017,False,False,Emoji per tweet,1,1,1,1,1
+inter_tweet_time,temporal,Varol et al. 2017,False,False,Mean hours between consecutive tweets (ITT),1,1,0,1,0
+tweet_burstiness,temporal,Varol et al. 2017,False,False,Std of hours between tweets (TB),1,1,0,1,0
+tweet_density_over_time,temporal,Yang et al. 2020,False,False,Tweets per day over the active span (TDOT),1,1,0,1,0
+tweet_time_irregularity,temporal,IBD variant of Varol et al. 2017,True,False,Coefficient of variation of inter-tweet time (TTI),1,1,0,1,0
+temporal_overlap,temporal,IBD,True,True,Mean |tweet time - (P_updated - P_created)| in days (TO),1,1,0,0,0
+temporal_overlap_age,temporal,IBD,True,True,Mean |tweet time - account age at Time_now| in days (TOA),1,1,0,1,0
+account_age_days,temporal,Yang et al. 2020,False,True,Days from creation to Time_now,1,1,1,1,1
+profile_update_days,temporal,IBD variant of Yang et al. 2020,True,True,Days from creation to P_updated ('profile_update'),1,1,0,0,0
+followers_over_time,temporal,Yang et al. 2020,False,True,followers / account age,1,1,1,1,1
+friends_over_time,temporal,Yang et al. 2020,False,True,friends / account age,1,1,1,1,1
+status_over_time,temporal,Yang et al. 2020,False,True,statuses / account age,1,1,1,1,1
+favorites_over_time,temporal,Yang et al. 2020,False,True,likes / account age,1,1,1,1,1
+mean_readability,readability,IBD variant of Cardaioli et al. 2021,True,False,"Mean of Dale-Chall, Flesch and ARI scores (MR)",1,1,1,1,1
+fog_smog_index,readability,IBD variant of Cardaioli et al. 2021,True,False,Gunning Fog + SMOG (FSI),1,1,1,1,1
+fog_smog_to_tweet,readability,IBD variant of Cardaioli et al. 2021,True,False,FSI / tweets (FST),1,1,1,1,1
+content_entropy,readability,Varol et al. 2017,False,False,"Shannon entropy of word distribution (CE, bits)",1,1,1,1,1
+avg_polarity,sentiment,Varol et al. 2017,False,False,Mean TextBlob polarity,1,1,1,1,1
+avg_subjectivity,sentiment,Varol et al. 2017,False,False,Mean TextBlob subjectivity,1,1,1,1,1
+min_polarity,sentiment,Varol et al. 2017,False,False,Minimum polarity,1,1,1,1,1
+max_polarity,sentiment,Varol et al. 2017,False,False,Maximum polarity,1,1,1,1,1
+min_subjectivity,sentiment,Varol et al. 2017,False,False,Minimum subjectivity,1,1,1,1,1
+max_subjectivity,sentiment,Varol et al. 2017,False,False,Maximum subjectivity,1,1,1,1,1
+polarity_drift,sentiment,Dickerson et al. 2014,False,False,Std of polarity,1,1,1,1,1
+extreme_polarity,sentiment,IBD,True,False,Share of tweets with |polarity| > 0.75,1,1,1,1,1
+subjectivity_drift,sentiment,Dickerson et al. 2014,False,False,Std of subjectivity (SD),1,1,1,1,1
+consistent_subjectivity,sentiment,IBD,True,False,1 if SD < 0.1 (CS),1,1,1,1,1

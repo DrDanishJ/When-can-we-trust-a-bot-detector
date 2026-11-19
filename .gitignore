@@ -1,0 +1,11 @@
+data/raw/
+data/sample/
+data/cache*/
+results_smoke/
+logs/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.joblib
